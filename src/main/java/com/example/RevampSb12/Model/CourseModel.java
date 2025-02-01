@@ -17,6 +17,17 @@ public class CourseModel {
     private double courseFee;
     private String courseDuration;
     private String courseRatings;
+    private double disCountedFee;
+
+    public double getDisCountedFee() {
+        return disCountedFee;
+    }
+
+    public void setDisCountedFee(double disCountedFee) {
+        this.disCountedFee = disCountedFee;
+    }
+
+
 
     public int getId() {
         return id;

@@ -4,6 +4,7 @@ import com.example.RevampSb12.Model.CourseModel;
 import com.example.RevampSb12.Repository.CourseRepository;
 import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,4 +51,6 @@ public class CourseService {
         return courseRepository.save(oldData);
 
     }
+
+
 }

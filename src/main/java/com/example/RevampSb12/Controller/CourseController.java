@@ -1,6 +1,7 @@
 package com.example.RevampSb12.Controller;
 
 import com.example.RevampSb12.Model.CourseModel;
+import com.example.RevampSb12.Repository.CourseRepository;
 import com.example.RevampSb12.Service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,9 @@ import java.util.List;
 @RestController
 public class CourseController {
 
+
+    @Autowired
+    CourseRepository courseRepository;
     //Bean Creation
     @Autowired
     CourseService courseService;
@@ -48,4 +52,22 @@ public class CourseController {
     public CourseModel updateCourse(@PathVariable int id,@RequestBody CourseModel courseModel){
         return  courseService.updateCourse(id,courseModel);
     }
+    @PostMapping("/courseOffer/{offer}/{name}")
+    public String giveCourseOffer(@PathVariable double offer,@PathVariable String name){
+        courseRepository.giveCourseOffer(offer,name);
+        return "Offer applied ";
+    }
+    @GetMapping("/getCLesserThanAmount/{amount}")
+    public List<CourseModel> getCLesserThanAmount(@PathVariable double amount) {
+        return courseRepository.getCLesserThanAmount(amount);
+    }
+    @GetMapping("/search/{name}")
+    public List<CourseModel>searchCourse(@PathVariable String name){
+        return courseRepository.searchCourse(name);
+    }
+    @GetMapping("/sortByCName")
+    public List<CourseModel>sortByCName(){
+        return courseRepository.sortByCName();
+    }
+
 }
